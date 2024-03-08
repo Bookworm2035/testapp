@@ -1,9 +1,11 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+//import the json file with college data
 import yourData from './CollegeBasketballTeams.json';
-
+//set the data to a variable
 const teamNames = yourData.teams;
+//define an interface so prettier doesnt get mad at me
 interface TeamProps {
   tid: number;
   cid: number;
@@ -17,12 +19,15 @@ interface TeamProps {
   latitude: number;
   longitude: number;
 }
-
+//old way to do it
 // const teamNames = [];
 
+//welcome message
 function Welcome() {
   return <h1>Welcome to my Basketball Teams Site </h1>;
 }
+
+//This will print out the info for a card
 class Team extends React.Component<TeamProps> {
   render() {
     const { school, name, city, state } = this.props;
@@ -40,10 +45,12 @@ class Team extends React.Component<TeamProps> {
     );
   }
 }
+//this will print out all the cards
 function TeamList() {
   // { teams }: { teams: TeamProps[] }
   return (
     <div>
+      {/* old way of doing it */}
       {/* <Team {...teamNames[0]}/> */}
       {/* {teams.map((oneTeam) => ( */}
       {teamNames.map((oneTeam) => (
@@ -53,7 +60,9 @@ function TeamList() {
   );
 }
 
+//this calls the other functions and is the main function for the app
 function App() {
+  //This is how chat recommends doing it
   // const [teams, setTeams] = useState<TeamProps[]>([]);
   // useEffect(() => {
   //   fetchTeams();
@@ -69,12 +78,17 @@ function App() {
   //   }
   // };
   return (
+    //always in a div tag
     <div className="App">
+      {/* call welcome function */}
       <Welcome />
       <br></br>
+      {/* call teamList function */}
       <TeamList />
-      {/* teams={teams} */}
+      {/* THIS WAS CHAT"S WAY teams={teams} */}
     </div>
   );
 }
+
+//tbh idk what this does but it is important
 export default App;
